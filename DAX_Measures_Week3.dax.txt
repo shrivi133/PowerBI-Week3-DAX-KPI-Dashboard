@@ -1,0 +1,25 @@
+-- ==========================================================
+-- Week 3 Assignment: DAX Functions & KPI Visuals
+-- ==========================================================
+
+-- 1. Core Required KPI Measures[cite: 11]
+Total Sales = SUM(Sales[Sales])[cite: 11]
+
+Total Profit = SUM(Sales[Profit])[cite: 11]
+
+Profit Margin = DIVIDE([Total Profit], [Total Sales], 0)[cite: 11]
+
+-- 2. Additional Analytical Measures (SUMX, AVERAGE, CALCULATE)[cite: 11]
+Total Quantity Sold = SUM(Sales[Quantity])
+
+Average Order Value = AVERAGE(Sales[Sales])
+
+Gross Revenue Before Discount = SUMX(Sales, DIVIDE(Sales[Sales], 1 - Sales[Discount]))
+
+Technology Sales = CALCULATE([Total Sales], Sales[Category] = "Technology")
+
+-- 3. Conditional Formatting Rule Measure (Highlight Negative Profits in Red)[cite: 11]
+Profit Status Color = IF([Total Profit] < 0, "#D64550", "#107C41")
+
+-- 4. Calculated Columns for Year Slicer[cite: 11]
+Order Year = YEAR(Sales[Order Date])
